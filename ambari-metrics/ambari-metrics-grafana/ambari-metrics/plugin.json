@@ -1,21 +1,38 @@
 {
   "type": "datasource",
-  "name": "Ambari Metrics",
-  "id": "ambari-metrics",
+  "name": "ams",
+  "id": "ams",
   "metrics": true,
   "staticRoot": ".",
   "defaultMatchFormat": "glob",
   "info": {
     "author": {
-      "name": "",
-      "url": ""
+      "name": "Prajwal Rao",
+      "url": "https://github.com/prajwalrao"
     },
     "links": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/prajwalrao/ambari-metrics-grafana"
+      },
+      {
+        "name": "License",
+        "url": "https://github.com/prajwalrao/ambari-metrics-grafana/blob/master/LICENSE"
+      },
+      {
+        "name": "Apache Ambari",
+        "url": "http://ambari.apache.org"
+      }
     ],
     "logos": {
       "small": "img/apache-ambari-logo-sm.png",
       "large": "img/apache-ambari-logo.png"
     },
-    "version": "1.0.2"
+    "version": "1.2.1",
+    "updated": "2018-10-02"
+  },
+  "dependencies": {
+    "grafanaVersion": "4.5.x - 5.x.x",
+    "plugins": []
   }
 }

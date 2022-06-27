@@ -24,7 +24,7 @@
   <description>Ambari Server</description>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <python.ver>python &gt;= 2.6</python.ver>
+    
     <!-- On centos the python xml's are inside python package -->
     <deb.architecture>amd64</deb.architecture>
     <custom.tests>false</custom.tests>

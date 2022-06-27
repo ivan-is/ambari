@@ -372,6 +372,34 @@ define([
               );
           };
 
+          // ########################## ANSIBLE MANAGED BLOCK START ##########################
+          // SolrCloud Calls
+          var getSolrCloudCoreData = function(target) {
+              var instanceId = typeof target.templatedCluster == 'undefined'  ? '' : '&instanceId=' + target.templatedCluster;
+              var precision = target.precision === 'default' || typeof target.precision == 'undefined'  ? '' : '&precision='
+                  + target.precision;
+              var metricAggregator = target.aggregator === "none" ? '' : '._' + target.aggregator;
+              var metricTransform = !target.transform || target.transform === "none" ? '' : '._' + target.transform;
+              var seriesAggregator = !target.seriesAggregator || target.seriesAggregator === "none" ? '' : '&seriesAggregateFunction=' + target.seriesAggregator;
+              return self.doAmbariRequest({ url: '/ws/v1/timeline/metrics?metricNames=' + target.sCoreMetric + metricTransform + instanceId
+              + metricAggregator + '&appId=SOLRCLOUD&startTime=' + from + '&endTime=' + to + precision + seriesAggregator }).then(
+                  allHostMetricsData(target)
+              );
+          };
+          var getSolrCloudCollectionData = function(target) {
+              var instanceId = typeof target.templatedCluster == 'undefined'  ? '' : '&instanceId=' + target.templatedCluster;
+              var precision = target.precision === 'default' || typeof target.precision == 'undefined'  ? '' : '&precision='
+                  + target.precision;
+              var metricAggregator = target.aggregator === "none" ? '' : '._' + target.aggregator;
+              var metricTransform = !target.transform || target.transform === "none" ? '' : '._' + target.transform;
+              var seriesAggregator = !target.seriesAggregator || target.seriesAggregator === "none" ? '' : '&seriesAggregateFunction=' + target.seriesAggregator;
+              return self.doAmbariRequest({ url: '/ws/v1/timeline/metrics?metricNames=' + target.sCollectionMetric + metricTransform + instanceId
+              + metricAggregator + '&appId=SOLRCLOUD&startTime=' + from + '&endTime=' + to + precision + seriesAggregator }).then(
+                  allHostMetricsData(target)
+              );
+          };
+          // ########################## ANSIBLE MANAGED BLOCK END ##########################
+
           // Druid calls.
           var getDruidData = function(target) {
             var instanceId = typeof target.templatedCluster == 'undefined'  ? '' : '&instanceId=' + target.templatedCluster;
@@ -540,6 +568,48 @@ define([
                 }));
               });
             }
+
+            // ########################## ANSIBLE MANAGED BLOCK START ##########################
+            //Templatized Dashboard for Solr Cloud Cores
+            if (templateSrv.variables[0].query === "solrcloud_core") {
+              var allCores = templateSrv.variables.filter(function(variable) {
+                return variable.query === "solrcloud_core";
+              });
+              var selectedCores = (_.isEmpty(allCores)) ? "" : allCores[0].options
+                .filter(getSelectedItems)
+                .map(function(coreName) {
+                  return coreName.value;
+                });
+
+              _.forEach(selectedCores, function(processCore) {
+                metricsPromises.push(_.map(options.targets, function(target) {
+                  target.sCore = processCore;
+                  target.sCoreMetric = target.metric.replace('*', target.sCore);
+                  return getSolrCloudCoreData(target);
+                }));
+              });
+            }
+
+            //Templatized Dashboard for Solr Cloud Collections
+            if (templateSrv.variables[0].query === "solrcloud_collection") {
+              var allCollections = templateSrv.variables.filter(function(variable) {
+                return variable.query === "solrcloud_collection";
+              });
+              var selectedCollections = (_.isEmpty(allCollections)) ? "" : allCollections[0].options
+                .filter(getSelectedItems)
+                .map(function(collectionsName) {
+                  return collectionsName.value;
+                });
+
+              _.forEach(selectedCollections, function(processCollection) {
+                metricsPromises.push(_.map(options.targets, function(target) {
+                  target.sCollection = processCollection;
+                  target.sCollectionMetric = target.metric.replace('*', target.sCollection);
+                  return getSolrCloudCollectionData(target);
+                }));
+              });
+            }
+            // ########################## ANSIBLE MANAGED BLOCK END ##########################
 
             //Templatized Dashboard for Storm Topologies
             if (templateSrv.variables[0].query === "topologies" && !templateSrv.variables[1]) {
@@ -869,6 +939,57 @@ define([
                       });
               });
           }
+
+          // ########################## ANSIBLE MANAGED BLOCK START ##########################
+          var coresSolrCloud = [];
+          //Templated Variables for Infra Solr Cores
+          if (interpolated === "solrcloud_core") {
+            return this.initMetricAppidMapping()
+              .then(function () {
+                var solrMetrics = getMetrics(allMetrics, "SOLRCLOUD");
+                var extractCores = solrMetrics.filter(/./.test.bind(new
+                RegExp("^solrcloud.solr.core.", 'g')));
+                _.map(extractCores, function (core) {
+                  // Core naming convention is infra.solr.core.<collection_name>.<shard>.<replica>.<metric_name>
+                  // coreName should be <collection_name>.<shard>.<replica>
+                  core = core.split('.');
+                  var coreName = core.slice(3,7).join(".");
+                  if (coresSolrCloud.indexOf(coreName) < 0) {
+                    coresSolrCloud.push(coreName);
+                  }
+                });
+                return _.map(coresSolrCloud, function (coresSolrCloud) {
+                        return {
+                          text: coresSolrCloud
+                        };
+                      });
+              });
+          }
+
+          var collectionsSolrCloud = [];
+          //Templated Variables for Infra Solr Collections
+          if (interpolated === "solrcloud_collection") {
+            return this.initMetricAppidMapping()
+              .then(function () {
+                var solrMetrics = getMetrics(allMetrics, "SOLRCLOUD");
+                var extractCollections = solrMetrics.filter(/./.test.bind(new
+                RegExp("^solrcloud.solr.core.", 'g')));
+                _.map(extractCollections, function (core) {
+                  // Core naming convention is infra.solr.core.<collection_name>.<shard>.<replica>.<metric_name>
+                  core = core.split('.');
+                  var collection = core.slice(3,5).join(".");
+                  if (collectionsSolrCloud.indexOf(collection) < 0) {
+                    collectionsSolrCloud.push(collection);
+                  }
+                });
+                return _.map(collectionsSolrCloud, function (collectionsSolrCloud) {
+                        return {
+                          text: collectionsSolrCloud
+                        };
+                      });
+              });
+          }
+          // ########################## ANSIBLE MANAGED BLOCK END ##########################
 
           var topologies = {};
           //Templated Variables for Storm Topologies

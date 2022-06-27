@@ -30,90 +30,100 @@ from resource_management.core.logger import Logger
 
 @OsFamilyFuncImpl(os_family=OSConst.WINSRV_FAMILY)
 def service(componentName, action='start', serviceName='yarn'):
-  import status_params
-  if status_params.service_map.has_key(componentName):
-    service_name = status_params.service_map[componentName]
-    if action == 'start' or action == 'stop':
-      Service(service_name, action=action)
-    elif action == 'status':
-      check_windows_service_status(service_name)
+    import status_params
+    if status_params.service_map.has_key(componentName):
+        service_name = status_params.service_map[componentName]
+        if action == 'start' or action == 'stop':
+            Service(service_name, action=action)
+        elif action == 'status':
+            check_windows_service_status(service_name)
 
 
 @OsFamilyFuncImpl(os_family=OsFamilyImpl.DEFAULT)
 def service(componentName, action='start', serviceName='yarn'):
-  import params
+    import params
 
-  if serviceName == 'mapreduce' and componentName == 'historyserver':
-    if not params.hdfs_tmp_dir or params.hdfs_tmp_dir == None or params.hdfs_tmp_dir.lower() == 'null':
-      Logger.error("WARNING: HDFS tmp dir property (hdfs_tmp_dir) is empty or invalid. Ambari will change permissions for the folder on regular basis.")
+    if serviceName == 'mapreduce' and componentName == 'historyserver':
+        if not params.hdfs_tmp_dir or params.hdfs_tmp_dir == None or params.hdfs_tmp_dir.lower() == 'null':
+            Logger.error("WARNING: HDFS tmp dir property (hdfs_tmp_dir) is empty or invalid. Ambari will change permissions for the folder on regular basis.")
 
-    delete_pid_file = True
-    daemon = format("{mapred_bin}/mr-jobhistory-daemon.sh")
-    pid_file = format("{mapred_pid_dir}/mapred-{mapred_user}-{componentName}.pid")
-    usr = params.mapred_user
-    log_dir = params.mapred_log_dir
-  else:
-    # !!! yarn-daemon.sh deletes the PID for us; if we remove it the script
-    # may not work correctly when stopping the service
-    delete_pid_file = False
-    daemon = format("{yarn_bin}/yarn-daemon.sh")
-    pid_file = format("{yarn_pid_dir}/yarn-{yarn_user}-{componentName}.pid")
-    usr = params.yarn_user
-    log_dir = params.yarn_log_dir
+        delete_pid_file = True
+        daemon = format("{mapred_bin}/mr-jobhistory-daemon.sh")
 
-  cmd = format("export HADOOP_LIBEXEC_DIR={hadoop_libexec_dir} && {daemon} --config {hadoop_conf_dir}")
+        #############  ANSIBLE MANAGED BLOCK START  #############
+        # pid_file = format("{mapred_pid_dir}/mapred-{mapred_user}-{componentName}.pid")
+        pid_file = format("{mapred_pid_dir}/hadoop-{mapred_user}-{componentName}.pid")
+        #############  ANSIBLE MANAGED BLOCK END  #############
 
-  if action == 'start':
+        usr = params.mapred_user
+        log_dir = params.mapred_log_dir
+    else:
+        # !!! yarn-daemon.sh deletes the PID for us; if we remove it the script
+        # may not work correctly when stopping the service
+        delete_pid_file = False
+        daemon = format("{yarn_bin}/yarn-daemon.sh")
 
-    daemon_cmd = format("{ulimit_cmd} {cmd} start {componentName}")
-    check_process = as_sudo(["test", "-f", pid_file]) + " && " + as_sudo(["pgrep", "-F", pid_file])
+        #############  ANSIBLE MANAGED BLOCK START  #############
+        # pid_file = format("{yarn_pid_dir}/yarn-{yarn_user}-{componentName}.pid")
+        pid_file = format("{yarn_pid_dir}/hadoop-{yarn_user}-{componentName}.pid")
+        #############  ANSIBLE MANAGED BLOCK END  #############
 
-    # Remove the pid file if its corresponding process is not running.
-    File(pid_file, action = "delete", not_if = check_process)
+        usr = params.yarn_user
+        log_dir = params.yarn_log_dir
 
-    if componentName == 'timelineserver' and serviceName == 'yarn':
-      File(params.ats_leveldb_lock_file,
-         action = "delete",
-         only_if = format("ls {params.ats_leveldb_lock_file}"),
-         not_if = check_process,
-         ignore_failures = True
-      )
+    cmd = format("export HADOOP_LIBEXEC_DIR={hadoop_libexec_dir} && {daemon} --config {hadoop_conf_dir}")
 
-    try:
-      # Attempt to start the process. Internally, this is skipped if the process is already running.
-      Execute(daemon_cmd, user = usr, not_if = check_process)
-  
-      # Ensure that the process with the expected PID exists.
-      Execute(check_process,
-              not_if = check_process,
-              tries=5,
-              try_sleep=1,
-      )
-    except:
-      show_logs(log_dir, usr)
-      raise
+    if action == 'start':
 
-  elif action == 'stop':
-    daemon_cmd = format("{cmd} stop {componentName}")
-    try:
-      Execute(daemon_cmd, user=usr)
-    except:
-      show_logs(log_dir, usr)
-      raise
+        daemon_cmd = format("{ulimit_cmd} {cmd} start {componentName}")
+        check_process = as_sudo(["test", "-f", pid_file]) + " && " + as_sudo(["pgrep", "-F", pid_file])
 
-    # !!! yarn-daemon doesn't need us to delete PIDs
-    if delete_pid_file is True:
-      File(pid_file, action="delete")
+        # Remove the pid file if its corresponding process is not running.
+        File(pid_file, action = "delete", not_if = check_process)
+
+        if componentName == 'timelineserver' and serviceName == 'yarn':
+            File(params.ats_leveldb_lock_file,
+                 action = "delete",
+                 only_if = format("ls {params.ats_leveldb_lock_file}"),
+                 not_if = check_process,
+                 ignore_failures = True
+                 )
+
+        try:
+            # Attempt to start the process. Internally, this is skipped if the process is already running.
+            Execute(daemon_cmd, user = usr, not_if = check_process)
+
+            # Ensure that the process with the expected PID exists.
+            Execute(check_process,
+                    not_if = check_process,
+                    tries=5,
+                    try_sleep=1,
+                    )
+        except:
+            show_logs(log_dir, usr)
+            raise
+
+    elif action == 'stop':
+        daemon_cmd = format("{cmd} stop {componentName}")
+        try:
+            Execute(daemon_cmd, user=usr)
+        except:
+            show_logs(log_dir, usr)
+            raise
+
+        # !!! yarn-daemon doesn't need us to delete PIDs
+        if delete_pid_file is True:
+            File(pid_file, action="delete")
 
 
-  elif action == 'refreshQueues':
-    rm_kinit_cmd = params.rm_kinit_cmd
-    refresh_cmd = format("{rm_kinit_cmd} export HADOOP_LIBEXEC_DIR={hadoop_libexec_dir} && {yarn_container_bin}/yarn rmadmin -refreshQueues")
+    elif action == 'refreshQueues':
+        rm_kinit_cmd = params.rm_kinit_cmd
+        refresh_cmd = format("{rm_kinit_cmd} export HADOOP_LIBEXEC_DIR={hadoop_libexec_dir} && {yarn_container_bin}/yarn rmadmin -refreshQueues")
 
-    Execute(refresh_cmd,
-            user = usr,
-            timeout = 20, # when Yarn is not started command hangs forever and should be killed
-            tries = 5,
-            try_sleep = 5,
-            timeout_kill_strategy = TerminateStrategy.KILL_PROCESS_GROUP, # the process cannot be simply killed by 'kill -15', so kill pg group instread.
-    )
+        Execute(refresh_cmd,
+                user = usr,
+                timeout = 20, # when Yarn is not started command hangs forever and should be killed
+                tries = 5,
+                try_sleep = 5,
+                timeout_kill_strategy = TerminateStrategy.KILL_PROCESS_GROUP, # the process cannot be simply killed by 'kill -15', so kill pg group instread.
+                )

@@ -1,0 +1,2474 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 13,
+  "iteration": 1640450826804,
+  "links": [
+    {
+      "asDropdown": true,
+      "icon": "external link",
+      "keepTime": true,
+      "tags": [
+        "infra-solr"
+      ],
+      "title": "Infra Dashboards",
+      "type": "dashboards"
+    }
+  ],
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 28,
+      "panels": [],
+      "title": "Indexing",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "hiddenSeries": false,
+      "id": 27,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "none",
+          "alias": "size",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.INDEX.sizeInBytes",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.INDEX.sizeInBytes",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.INDEX.sizeInBytes",
+          "seriesAggregator": "sum",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Index Size",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "hiddenSeries": false,
+      "id": 1,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "adds",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.UPDATE.updateHandler.adds",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.UPDATE.updateHandler.adds",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.UPDATE.updateHandler.adds",
+          "seriesAggregator": "sum",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Indexing Throughput",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "deletes by id",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.UPDATE.updateHandler.deletesById",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.UPDATE.updateHandler.deletesById",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.UPDATE.updateHandler.deletesById",
+          "seriesAggregator": "sum",
+          "transform": "none"
+        },
+        {
+          "aggregator": "avg",
+          "alias": "deletes by query",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.UPDATE.updateHandler.deletesByQuery",
+          "precision": "default",
+          "refId": "B",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.UPDATE.updateHandler.deletesByQuery",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.UPDATE.updateHandler.deletesByQuery",
+          "seriesAggregator": "sum",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Deletes",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 15
+      },
+      "hiddenSeries": false,
+      "id": 3,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "errors",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.UPDATE.updateHandler.errors",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.UPDATE.updateHandler.errors",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.UPDATE.updateHandler.errors",
+          "seriesAggregator": "sum",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Errors",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 15
+      },
+      "hiddenSeries": false,
+      "id": 4,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "docs pending",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.UPDATE.updateHandler.docsPending",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.UPDATE.updateHandler.docsPending",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.UPDATE.updateHandler.docsPending",
+          "seriesAggregator": "sum",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Pending Documents",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 22
+      },
+      "hiddenSeries": false,
+      "id": 5,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "average requests per second",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.QUERY./select.requestTimes.avgRequestsPerSecond",
+          "precision": "default",
+          "refId": "B",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.QUERY./select.requestTimes.avgRequestsPerSecond",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.QUERY./select.requestTimes.avgRequestsPerSecond",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Select Handler Requests",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 22
+      },
+      "hiddenSeries": false,
+      "id": 9,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "average time per requests",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.QUERY./select.requestTimes.avgTimePerRequest",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.QUERY./select.requestTimes.avgTimePerRequest",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.QUERY./select.requestTimes.avgTimePerRequest",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        },
+        {
+          "aggregator": "avg",
+          "alias": "median request time",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.QUERY./select.requestTimes.medianRequestTime",
+          "precision": "default",
+          "refId": "B",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.QUERY./select.requestTimes.medianRequestTime",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.QUERY./select.requestTimes.medianRequestTime",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Time Per Select Handler Requests",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "ns",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 29
+      },
+      "hiddenSeries": false,
+      "id": 6,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "average requests per second",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.UPDATE./update.requestTimes.avgRequestsPerSecond",
+          "precision": "default",
+          "refId": "B",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.UPDATE./update.requestTimes.avgRequestsPerSecond",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.UPDATE./update.requestTimes.avgRequestsPerSecond",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Update Handler Requests",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 29
+      },
+      "hiddenSeries": false,
+      "id": 10,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "average time per request",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.UPDATE./update.requestTimes.avgTimePerRequest",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.UPDATE./update.requestTimes.avgTimePerRequest",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.UPDATE./update.requestTimes.avgTimePerRequest",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        },
+        {
+          "aggregator": "avg",
+          "alias": "median request time",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.UPDATE./update.requestTimes.medianRequestTime",
+          "precision": "default",
+          "refId": "B",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.UPDATE./update.requestTimes.medianRequestTime",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.UPDATE./update.requestTimes.medianRequestTime",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Time Per Update Handler Request",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "ns",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 36
+      },
+      "id": 7,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "average requests per second",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.QUERY./get.requestTimes.avgRequestsPerSecond",
+          "precision": "default",
+          "refId": "B",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.QUERY./get.requestTimes.avgRequestsPerSecond",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.QUERY./get.requestTimes.avgRequestsPerSecond",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Get Handler Requests",
+      "tooltip": {
+        "shared": true,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "show": true
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 36
+      },
+      "id": 11,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "average time per requests",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.QUERY./get.requestTimes.avgTimePerRequest",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.QUERY./get.requestTimes.avgTimePerRequest",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.QUERY./get.requestTimes.avgTimePerRequest",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        },
+        {
+          "aggregator": "avg",
+          "alias": "median request time",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.QUERY./get.requestTimes.medianRequestTime",
+          "precision": "default",
+          "refId": "B",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.QUERY./get.requestTimes.medianRequestTime",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.QUERY./get.requestTimes.medianRequestTime",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Time Per Get Handler Request",
+      "tooltip": {
+        "shared": true,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "show": true
+      },
+      "yaxes": [
+        {
+          "format": "ns",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 43
+      },
+      "id": 8,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "average requests per second",
+          "app": "ambari-infra-solr",
+          "cluster": "",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "hosts": "",
+          "metric": "infra.solr.core.*.%.ADMIN./admin/luke.requestTimes.avgRequestsPerSecond",
+          "precision": "default",
+          "refId": "B",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.ADMIN./admin/luke.requestTimes.avgRequestsPerSecond",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.ADMIN./admin/luke.requestTimes.avgRequestsPerSecond",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Luke Handler Requests",
+      "tooltip": {
+        "shared": true,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "show": true
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 43
+      },
+      "id": 12,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "none",
+          "alias": "average time per request",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.ADMIN./admin/luke.requestTimes.avgTimePerRequest",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.ADMIN./admin/luke.requestTimes.avgTimePerRequest",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.ADMIN./admin/luke.requestTimes.avgTimePerRequest",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        },
+        {
+          "aggregator": "none",
+          "alias": "median request time",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.ADMIN./admin/luke.requestTimes.medianRequestTime",
+          "precision": "default",
+          "refId": "B",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.ADMIN./admin/luke.requestTimes.medianRequestTime",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.ADMIN./admin/luke.requestTimes.medianRequestTime",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Time Per Luke Handler Request",
+      "tooltip": {
+        "shared": true,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "show": true
+      },
+      "yaxes": [
+        {
+          "format": "ns",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 50
+      },
+      "id": 13,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "average requests per second",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.QUERY./get.requestTimes.avgRequestsPerSecond",
+          "precision": "default",
+          "refId": "B",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.QUERY./get.requestTimes.avgRequestsPerSecond",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.QUERY./get.requestTimes.avgRequestsPerSecond",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Query Handler Requests",
+      "tooltip": {
+        "shared": true,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "show": true
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 50
+      },
+      "id": 14,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "average time per request",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.QUERY./get.requestTimes.avgTimePerRequest",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.QUERY./get.requestTimes.avgTimePerRequest",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.QUERY./get.requestTimes.avgTimePerRequest",
+          "seriesAggregator": "none",
+          "transform": "none"
+        },
+        {
+          "aggregator": "avg",
+          "alias": "median request time",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.QUERY./get.requestTimes.medianRequestTime",
+          "precision": "default",
+          "refId": "B",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.QUERY./get.requestTimes.medianRequestTime",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.QUERY./get.requestTimes.medianRequestTime",
+          "seriesAggregator": "none",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Time Per Query Handler Requests",
+      "tooltip": {
+        "shared": true,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "show": true
+      },
+      "yaxes": [
+        {
+          "format": "ns",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 57
+      },
+      "id": 29,
+      "panels": [],
+      "title": "Cashes",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 58
+      },
+      "id": 15,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "hit ratio",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.CACHE.searcher.filterCache.hitratio",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.CACHE.searcher.filterCache.hitratio",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.CACHE.searcher.filterCache.hitratio",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Filter Cache Ratio",
+      "tooltip": {
+        "shared": true,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "show": true
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 58
+      },
+      "id": 16,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "size",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.CACHE.searcher.filterCache.size",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.CACHE.searcher.filterCache.size",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.CACHE.searcher.filterCache.size",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Filter Cache Size",
+      "tooltip": {
+        "shared": true,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "show": true
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 58
+      },
+      "id": 17,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "warmup time",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.CACHE.searcher.documentCache.warmupTime",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.CACHE.searcher.documentCache.warmupTime",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.CACHE.searcher.documentCache.warmupTime",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Filter Cache Warmup Time",
+      "tooltip": {
+        "shared": true,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "show": true
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 65
+      },
+      "id": 18,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "hit ratio",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.CACHE.searcher.documentCache.hitratio",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.CACHE.searcher.documentCache.hitratio",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.CACHE.searcher.documentCache.hitratio",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Document Cache Hit Ratio",
+      "tooltip": {
+        "shared": true,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "show": true
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 65
+      },
+      "id": 19,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "size",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.CACHE.searcher.documentCache.size",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.CACHE.searcher.documentCache.size",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.CACHE.searcher.documentCache.size",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Document Cache Size",
+      "tooltip": {
+        "shared": true,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "show": true
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 65
+      },
+      "id": 20,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "warmup time",
+          "app": "ambari-infra-solr",
+          "cluster": "",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "hosts": "",
+          "metric": "infra.solr.core.*.%.CACHE.searcher.documentCache.warmupTime",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.CACHE.searcher.documentCache.warmupTime",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.CACHE.searcher.documentCache.warmupTime",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Document Cache Warmup Time",
+      "tooltip": {
+        "shared": true,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "show": true
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 72
+      },
+      "id": 21,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "hit ratio",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.CACHE.searcher.queryResultCache.hitratio",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.CACHE.searcher.queryResultCache.hitratio",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.CACHE.searcher.queryResultCache.hitratio",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Query Result Cache Hit Ratio",
+      "tooltip": {
+        "shared": true,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "show": true
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 72
+      },
+      "id": 22,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "size",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.CACHE.searcher.queryResultCache.size",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.CACHE.searcher.queryResultCache.size",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.CACHE.searcher.queryResultCache.size",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Query Result Cache Size",
+      "tooltip": {
+        "shared": true,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "show": true
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 72
+      },
+      "id": 23,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "warmup time",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.CACHE.searcher.queryResultCache.warmupTime",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.CACHE.searcher.queryResultCache.warmupTime",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.CACHE.searcher.queryResultCache.warmupTime",
+          "seriesAggregator": "avg",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Query Result Cache Warmup Time",
+      "tooltip": {
+        "shared": true,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "show": true
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "datasource": "ams",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 79
+      },
+      "id": 24,
+      "isNew": true,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregator": "avg",
+          "alias": "count",
+          "app": "ambari-infra-solr",
+          "downsampleAggregator": "avg",
+          "errors": {},
+          "metric": "infra.solr.core.*.%.CACHE.core.fieldCache.entries_count",
+          "precision": "default",
+          "refId": "A",
+          "sCollection": "hadoop_logs",
+          "sCollectionMetric": "infra.solr.core.hadoop_logs.%.CACHE.core.fieldCache.entries_count",
+          "sCore": "audit_logs.shard0.replica_n1",
+          "sCoreMetric": "infra.solr.core.audit_logs.shard0.replica_n1.CACHE.core.fieldCache.entries_count",
+          "seriesAggregator": "sum",
+          "transform": "none"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Field Cache Entry Count",
+      "tooltip": {
+        "shared": true,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "show": true
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 22,
+  "style": "dark",
+  "tags": [
+    "infra-solr"
+  ],
+  "templating": {
+    "list": [
+      {
+        "allFormat": "glob",
+        "allValue": null,
+        "current": {
+          "text": "hadoop_logs",
+          "value": "hadoop_logs"
+        },
+        "datasource": "ams",
+        "definition": "",
+        "hide": 0,
+        "includeAll": true,
+        "index": -1,
+        "label": null,
+        "multi": true,
+        "multiFormat": "glob",
+        "name": "Collections",
+        "options": [],
+        "query": "infra_solr_collection",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {
+    "now": true,
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "Infra Solr Collections",
+  "uid": "af1iCXTnk",
+  "variables": {
+    "list": []
+  },
+  "version": 2
+}
